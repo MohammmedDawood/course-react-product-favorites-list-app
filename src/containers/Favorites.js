@@ -1,14 +1,17 @@
-import React, { useContext } from "react";
+import React from "react"; //, { useContext }
 // import { useSelector } from 'react-redux';
 
-import { ProductContext } from "../context/product-context";
+// import { ProductContext } from "../context/product-context";
 import FavoriteItem from "../components/Favorites/FavoriteItem";
+import { useStore } from "../hooks-store/store";
 import "./Products.css";
 
 const Favorites = (props) => {
-  const favoriteProducts = useContext(ProductContext).products.filter(
-    (p) => p.isFavorite
-  );
+  const state = useStore()[0];
+  const favoriteProducts = state.products.filter((p) => p.isFavorite);
+  // const favoriteProducts = useContext(ProductContext).products.filter(
+  //   (p) => p.isFavorite
+  // );
 
   // const favoriteProducts = useSelector(state =>
   //   state.shop.products.filter(p => p.isFavorite)
